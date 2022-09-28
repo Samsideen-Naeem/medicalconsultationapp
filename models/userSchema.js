@@ -20,6 +20,6 @@ const userSchema = mongoose.Schema({
         gps:String
     }
 })
-    const User = mongoose.models('user', userSchema)
+    const User = mongoose.model('user', userSchema)
 
     module.exports = User

@@ -1,11 +1,21 @@
 const express = require('express')
 const dotenv = require('dotenv')
+const connectDB = require('./config/connectDB')
+const userRoute = require("./routes/userRoute")
+const medicalRoute = require("./routes/medicalRoute")
+const morgan = require("morgan")
+
+
+const app = express();
 
 dotenv.config();
-const app = express();
+connectDB();
 
 //middleware
 app.use(express.json())
+app.use("/api/user", userRoute)
+app.use("/api/medical", medicalRoute)
+app.use(morgan('dev'))
 
 
 app.get('/',(req, res)=> {
